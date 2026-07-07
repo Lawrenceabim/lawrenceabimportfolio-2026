@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f0f0eb;
+  --foreground: #1b1915;
+  --surface: #e7e6df;
+  --surface-hover: #ddddd4;
+  --muted-foreground: #6b6862;
+  --border: #dcdbd2;
+  --accent: #b87a2e;
+  --accent-hover: #a06a24;
+  --accent-foreground: #f5f4ef;
+  --verified: #4f6b4c;
+  --verified-foreground: #f5f4ef;
+}
+
+.dark {
+  --background: #141310;
+  --foreground: #edeae2;
+  --surface: #1b1915;
+  --surface-hover: #242019;
+  --muted-foreground: #8c8579;
+  --border: #2b2721;
+  --accent: #d0954c;
+  --accent-hover: #dda568;
+  --accent-foreground: #14130f;
+  --verified: #7fa378;
+  --verified-foreground: #14130f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-verified: var(--verified);
+  --color-verified-foreground: var(--verified-foreground);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+ body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* The engineered global dot grid */
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center top;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes particle-drift {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(-32px);
+      opacity: 0.8;
+    }
+  }
+
+  .particle-drift {
+    animation: particle-drift 9s ease-in-out infinite;
+  }
+
+  /* Cyber Glitch Effect - Single Strike */
+  @keyframes text-glitch {
+    0%, 100% { transform: translate(0); text-shadow: none; }
+    20% { transform: translate(-2px, 1px); text-shadow: 2px 0 var(--color-accent), -2px 0 var(--color-muted-foreground); }
+    40% { transform: translate(2px, -1px); text-shadow: -2px 0 var(--color-accent), 2px 0 var(--color-muted-foreground); }
+    60% { transform: translate(0); text-shadow: none; }
+    80% { transform: translate(-1px, 2px); text-shadow: 1px 0 var(--color-accent); }
+  }
+
+  .glitch-effect {
+    display: inline-block;
+  }
+
+/* Infinite Marquee Scroll */
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    /* 40s controls the speed. Increase to make it slower, decrease to make it faster */
+    animation: marquee 40s linear infinite; 
+  }
+
+  /* Only fires ONCE for 0.5s when the parent .group is hovered */
+  .group:hover .glitch-effect {
+    animation: text-glitch 0.5s 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
