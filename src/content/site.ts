@@ -21,7 +21,7 @@ export const siteConfig = {
 } as const;
 
 export const navItems: NavItem[] = [
-  { label: "Profile", href: "#profile" },
+  { label: "Profile", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Research", href: "#research" },
   { label: "Projects", href: "#projects" },
