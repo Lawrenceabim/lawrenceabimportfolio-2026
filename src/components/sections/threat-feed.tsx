@@ -145,7 +145,7 @@ export function ThreatFeed() {
       </div>
 
       {/* Centered Bottom Navigation Arrows */}
-      <div className="mt-8 hidden md:flex items-center justify-center gap-4 sm:pl-12">
+      <div className="mt-8 flex md:flex items-center justify-center gap-4 sm:pl-12">
         <button 
           onClick={() => scroll("left")}
           className="group flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface/30 transition-all hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_15px_-3px_rgba(208,149,76,0.2)]"
