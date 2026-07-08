@@ -23,6 +23,14 @@ export function ThreatFeed() {
     const container = e.currentTarget;
     const index = Math.round(container.scrollLeft / container.offsetWidth);
     setActiveIndex(index);
+
+    // Check if we hit the absolute end of the scroll container
+    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+      // Wait 1.5 seconds so they can read the last card, then smoothly slide back to start
+      setTimeout(() => {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      }, 1500); 
+    }
   };
 
   useEffect(() => {
@@ -53,8 +61,16 @@ export function ThreatFeed() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
       const scrollAmount = 440; 
-      scrollContainerRef.current.scrollBy({
+      
+      // If clicking right and we are at the end, snap back to start
+      if (direction === "right" && container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth"
       });
@@ -120,7 +136,7 @@ export function ThreatFeed() {
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all hover:bg-white/10 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.15)]"
+              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-white/10 bg-white/5 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] p-6 transition-all hover:bg-white/10 hover:-translate-y-1 hover:border-accent shadow-[0_0_15px_-3px_rgba(208,149,76,0.08)] hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.2)]"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
