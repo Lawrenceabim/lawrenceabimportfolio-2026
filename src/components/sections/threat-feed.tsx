@@ -16,8 +16,14 @@ export function ThreatFeed() {
   const [isHovered, setIsHovered] = useState(false);
   const [articles, setArticles] = useState<ThreatArticle[]>([]);
   const [loading, setLoading] = useState(true);
-  
+  const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const index = Math.round(container.scrollLeft / container.offsetWidth);
+    setActiveIndex(index);
+  };
 
   useEffect(() => {
     const fetchThreats = async () => {
@@ -96,6 +102,7 @@ export function ThreatFeed() {
       {/* Live Feed Carousel Grid */}
       <div 
         ref={scrollContainerRef}
+        onScroll={handleScroll}
         className="flex gap-6 sm:pl-12 overflow-x-auto snap-x snap-mandatory pb-4 pt-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {loading ? (
@@ -164,11 +171,13 @@ export function ThreatFeed() {
 
       {/* Mobile Pagination Dots (Hidden on Desktop) */}
       <div className="mt-6 flex md:hidden items-center justify-center gap-2 sm:pl-12">
-        {articles.map((_, i) => (
+         {articles.map((_, i) => (
           <div 
             key={i} 
-            className={`rounded-full transition-all ${i === 0 ? "h-2.5 w-2.5 bg-accent" : "h-2 w-2 bg-accent/30"}`} 
-          />
+            className={`rounded-full transition-all duration-300 ${
+                i === activeIndex ? "h-2.5 w-2.5 bg-accent" : "h-2 w-2 bg-accent/30"
+            }`} 
+        />
         ))}
       </div>
 

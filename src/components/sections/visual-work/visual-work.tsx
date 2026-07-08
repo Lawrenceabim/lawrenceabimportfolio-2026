@@ -25,7 +25,7 @@ export function VisualWork() {
       <section 
         ref={sectionRef}
         id="visual-work" 
-        className="relative w-full overflow-hidden py-24 bg-[#141310] dark:bg-[#f0f0eb] transition-colors duration-300"
+        className="relative w-full overflow-hidden py-12 bg-[#141310] dark:bg-[#f0f0eb] transition-colors duration-300"
         onMouseEnter={() => setIsSectionHovered(true)}
         onMouseLeave={() => setIsSectionHovered(false)}
         onMouseMove={handleMouseMove}
@@ -115,10 +115,13 @@ export function VisualWork() {
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center bg-background/90 p-4 backdrop-blur-md sm:p-12"
           >
-            <div className="absolute right-6 top-6 rounded-full bg-surface/50 p-2 text-muted-foreground hover:text-foreground">
-              <X className="h-6 w-6" />
-            </div>
-
+            
+            <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute right-6 top-6 z-[101] rounded-full bg-surface/50 p-2 text-muted-foreground hover:text-foreground cursor-pointer"
+            >
+             <X className="h-6 w-6" />
+            </button>
             <motion.div 
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
