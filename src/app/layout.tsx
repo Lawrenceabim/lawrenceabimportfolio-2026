@@ -22,14 +22,13 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    // (Notice the entire 'images' block is gone from here)
+    // (We leave 'images' completely empty here so Next.js automatically grabs your new 256x256 opengraph-image.png file!)
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary", // <-- THIS specific line forces the small square side-layout across platforms!
     title: siteConfig.title,
     description: siteConfig.description,
     creator: siteConfig.twitterHandle,
-    // (Notice the 'images' line is gone from here too)
   },
   robots: {
     index: true,

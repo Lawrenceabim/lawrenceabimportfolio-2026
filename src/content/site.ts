@@ -8,7 +8,7 @@ export const siteConfig = {
   location: "Istanbul, TR",
   status: "Clearance: Granted",
   focusAreas: ["Cybersecurity", "OSINT", "Risk Management", "Threat Analysis"],
-  url: "https://yourdomain.com", 
+  url: "[https://lawrenceabim.com](https://lawrenceabim.com)", 
   ogImage: "/og-image.png",
   twitterHandle: "@lawrenceabim",
   keywords: [
