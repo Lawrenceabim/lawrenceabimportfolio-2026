@@ -21,15 +21,21 @@ export function ThreatFeed() {
   
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const container = e.currentTarget;
-    const index = Math.round(container.scrollLeft / container.offsetWidth);
-    setActiveIndex(index);
+    
+    // Update the dots to loop correctly
+    const rawIndex = Math.round(container.scrollLeft / container.offsetWidth);
+    setActiveIndex(rawIndex % (articles.length || 1));
 
-    // Check if we hit the absolute end of the scroll container
-    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-      // Wait 1.5 seconds so they can read the last card, then smoothly slide back to start
-      setTimeout(() => {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-      }, 1500); 
+    // Divide the container into 3 identical sections for the illusion
+    const oneThirdScroll = container.scrollWidth / 3;
+    
+    // If they scroll to the 3rd section, silently jump back to the 2nd section
+    if (container.scrollLeft >= oneThirdScroll * 2 - 20) {
+      container.scrollLeft = container.scrollLeft - oneThirdScroll;
+    } 
+    // If they scroll backwards to the start, silently jump forward to the 2nd section
+    else if (container.scrollLeft <= 0) {
+      container.scrollLeft = container.scrollLeft + oneThirdScroll;
     }
   };
 
@@ -64,12 +70,6 @@ export function ThreatFeed() {
       const container = scrollContainerRef.current;
       const scrollAmount = 440; 
       
-      // If clicking right and we are at the end, snap back to start
-      if (direction === "right" && container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-        return;
-      }
-
       container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth"
@@ -130,13 +130,15 @@ export function ThreatFeed() {
             </div>
           ))
         ) : (
-          articles.map((article, i) => (
+          // Duplicate the articles 3 times to create the endless loop illusion
+          [...articles, ...articles, ...articles].map((article, i) => (
             <a 
               key={i} 
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-white/10 bg-white/5 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] p-6 transition-all hover:bg-white/10 hover:-translate-y-1 hover:border-accent shadow-[0_0_15px_-3px_rgba(208,149,76,0.08)] hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.2)]"
+              // Added active: classes here for the mobile touch glow
+              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-white/10 bg-white/5 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] p-6 transition-all hover:bg-white/10 active:bg-white/10 hover:-translate-y-1 active:-translate-y-1 hover:border-accent active:border-accent shadow-[0_0_15px_-3px_rgba(208,149,76,0.08)] hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.2)] active:shadow-[0_0_30px_-10px_rgba(208,149,76,0.2)]"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
@@ -144,10 +146,12 @@ export function ThreatFeed() {
                     <Clock className="h-3 w-3 text-accent" />
                     {formatDate(article.pubDate)}
                   </div>
-                  <Radio className="h-4 w-4 text-accent opacity-50 group-hover:opacity-100 transition-opacity animate-pulse" />
+                  {/* Added group-active: to highlight icon on touch */}
+                  <Radio className="h-4 w-4 text-accent opacity-50 group-hover:opacity-100 group-active:opacity-100 transition-opacity animate-pulse" />
                 </div>
                 
-                <h3 className="mb-4 font-sans text-lg font-bold leading-snug text-foreground group-hover:text-accent transition-colors line-clamp-3">
+                {/* Added group-active: to turn text gold on touch */}
+                <h3 className="mb-4 font-sans text-lg font-bold leading-snug text-foreground group-hover:text-accent group-active:text-accent transition-colors line-clamp-3">
                   {article.title}
                 </h3>
               </div>
@@ -159,7 +163,8 @@ export function ThreatFeed() {
                     New Threat Logged
                   </span>
                 </div>
-                <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors" />
+                {/* Added group-active: to highlight link icon on touch */}
+                <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-accent group-active:text-accent transition-colors" />
               </div>
             </a>
           ))
