@@ -2,7 +2,7 @@ import type { NavItem, SocialLink } from "@/types";
 
 export const siteConfig = {
   name: "Bimbo Lawrence Damitan",
-  title: "Cybersecurity Scholar & Applied Researcher",
+  title: "Bimbo Lawrence Damitan — Cybersecurity",
   description:
     "Bridging the gap between tactical IT operations and applied security research. My technical foundation was built in Nigeria, handling data analysis and digital forensics for the national power grid. Today, I'm a CyberMACS scholar and TÜBİTAK researcher in Istanbul. From evaluating EU transition strategies using GENESYS-MOD to designing custom RAG pipelines, I specialize in turning complex data into actionable security intelligence.",
   location: "Istanbul, TR",
