@@ -115,7 +115,6 @@ export function VisualWork() {
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center bg-background/90 p-4 backdrop-blur-md sm:p-12"
           >
-            
             <button 
                 onClick={() => setSelectedImage(null)}
                 className="absolute right-6 top-6 z-[101] rounded-full bg-surface/50 p-2 text-muted-foreground hover:text-foreground cursor-pointer"
