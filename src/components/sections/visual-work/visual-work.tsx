@@ -3,9 +3,10 @@
 import { Container } from "@/components/ui/container";
 import { visualWork } from "@/content/site";
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useRef } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+
 
 export function VisualWork() {
   const [isSectionHovered, setIsSectionHovered] = useState(false);
@@ -19,6 +20,27 @@ export function VisualWork() {
     const rect = sectionRef.current.getBoundingClientRect();
     setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
+
+const scrollerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let animationId: number;
+    const scroll = () => {
+      // If the container exists and the user isn't touching/hovering it
+      if (scrollerRef.current && !isSectionHovered) {
+        scrollerRef.current.scrollLeft += 1; // Change this number to adjust speed
+        
+        // Loop back to start seamlessly when we hit halfway
+        if (scrollerRef.current.scrollLeft >= scrollerRef.current.scrollWidth / 2) {
+          scrollerRef.current.scrollLeft = 0;
+        }
+      }
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    animationId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationId);
+  }, [isSectionHovered]);
 
   return (
     <>
@@ -77,7 +99,12 @@ export function VisualWork() {
         </Container>
         
         {/* The Infinite Scrolling Marquee */}
-        <div className="relative z-10 mt-8 flex w-max animate-marquee">
+        <div 
+            ref={scrollerRef}
+            className="relative z-10 mt-8 flex w-full overflow-x-auto pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            onTouchStart={() => setIsSectionHovered(true)}
+            onTouchEnd={() => setIsSectionHovered(false)}
+        >
           {[...visualWork, ...visualWork].map((work, index) => (
             <div 
               key={index}
