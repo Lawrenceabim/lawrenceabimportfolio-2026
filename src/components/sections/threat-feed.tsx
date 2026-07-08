@@ -113,7 +113,7 @@ export function ThreatFeed() {
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-border bg-background p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.15)]"
+              className="w-[85vw] sm:w-[400px] shrink-0 snap-start group relative flex flex-col justify-between rounded-lg border border-white/10 bg-white/5 backdrop-blur-md p-6 transition-all hover:bg-white/10 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_30px_-10px_rgba(208,149,76,0.15)]"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
