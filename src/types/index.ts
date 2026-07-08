@@ -51,3 +51,14 @@ export interface AwardItem {
   logo?: string; 
   link?: string;  
 }
+
+export interface NavItem {
+  name: string;
+  href: string;
+}
+
+export interface SocialLink {
+  name: string;
+  href: string;
+  icon?: any; 
+}
