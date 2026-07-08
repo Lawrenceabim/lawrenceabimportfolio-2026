@@ -53,8 +53,9 @@ export interface AwardItem {
 }
 
 export interface NavItem {
-  name: string;
+  label: string;
   href: string;
+  name?: string; 
 }
 
 export interface SocialLink {
