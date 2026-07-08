@@ -59,7 +59,8 @@ export interface NavItem {
 }
 
 export interface SocialLink {
-  name: string;
+  label: string;
   href: string;
+  name?: string; 
   icon?: any; 
 }
