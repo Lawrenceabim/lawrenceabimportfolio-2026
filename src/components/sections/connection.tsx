@@ -59,7 +59,7 @@ export function Connection() {
       {/* Header */}
       <div className="mb-12 sm:pl-12">
         <span className="mb-2 block font-mono text-sm tracking-widest text-accent">
-          08 &mdash; COMMS
+          09 &mdash; COMMS
         </span>
         <h2 className="font-sans text-3xl font-semibold tracking-tight text-foreground">
           Establish Connection

@@ -101,7 +101,7 @@ export function ThreatFeed() {
       {/* Header (Arrows removed from here) */}
       <div className="mb-10 sm:pl-12 pr-4 sm:pr-12">
         <span className="mb-2 flex items-center gap-2 font-mono text-sm tracking-widest text-accent">
-          09 &mdash; STAY UPDATED
+          05 &mdash; STAY UPDATED
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>

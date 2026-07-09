@@ -34,7 +34,7 @@ export function Certifications() {
       {/* HEADER (Right Padded) */}
       <div className="mb-12 sm:pr-12">
         <span className="mb-2 block font-mono text-sm tracking-widest text-accent">
-          06 &mdash; RECOGNITION
+          07 &mdash; RECOGNITION
         </span>
         <h2 className="font-sans text-3xl font-semibold tracking-tight text-foreground">
           Certifications & Awards

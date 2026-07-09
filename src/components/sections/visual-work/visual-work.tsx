@@ -83,7 +83,7 @@ const scrollerRef = useRef<HTMLDivElement>(null);
 
           <div className="mb-12 sm:pr-12">
             <span className="mb-2 block font-mono text-sm tracking-widest text-accent">
-              06 &mdash; CREATIVE DIRECTION
+              08 &mdash; CREATIVE DIRECTION
             </span>
             <h2 className="font-sans text-4xl font-black uppercase tracking-tight text-[#edeae2] dark:text-[#1b1915] sm:text-6xl">
               Visual Work
