@@ -49,7 +49,7 @@ export const research = [
     title: "Hydrogen-Enabled Sector Coupling in Turkiye's Energy Transition: Integrated Modeling with GENESYS-MOD",
     venue: "Man0EUvRE Project (TÜBİTAK)",
     year: "2026",
-    status: "Published", 
+    status: "Accepted", 
     link: "/papers/EEM_2025_Hydrogen_Transition.pdf",
     overview: "A modeling study using the GENESYS-MOD framework to analyze hydrogen-driven sector coupling in Turkiye's long-term energy transition through 2050. The research highlights how early renewable deployment and hydrogen integration are critical for decarbonization, industrial heat substitution, and cross-border energy trade with Europe.",
   },
