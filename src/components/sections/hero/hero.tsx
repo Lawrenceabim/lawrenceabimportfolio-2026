@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/content/site";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download, Mail } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -141,7 +141,7 @@ export function Hero() {
               ))}
             </h1>
 
-            <ul className="mt-12 flex flex-wrap justify-center gap-3 md:gap-4">
+                        <ul className="mt-12 flex flex-wrap justify-center gap-3 md:gap-4">
               {siteConfig.focusAreas.map((area) => (
                 <li key={area}>
                   <span className="inline-block border border-border bg-background/80 px-4 py-2 font-mono text-xs font-medium uppercase tracking-wider text-foreground backdrop-blur-md transition-colors duration-200 hover:border-accent hover:text-accent">
@@ -150,6 +150,25 @@ export function Hero() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={siteConfig.resumeUrl}
+                download
+                className="inline-flex items-center gap-2 border border-border bg-background/80 px-5 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-md transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download résumé
+              </a>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 border border-border bg-background/80 px-5 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-foreground backdrop-blur-md transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Contact me
+              </a>
+            </div>
             
           </div>
         </Container>

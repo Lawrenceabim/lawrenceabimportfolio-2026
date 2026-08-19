@@ -11,6 +11,8 @@ export const siteConfig = {
   url: "https://lawrenceabim.com",
   ogImage: "/og-image.png",
   twitterHandle: "@lawrenceabim",
+    resumeUrl:
+    "/resume/Bimbo-Lawrence-Damitan-Cybersecurity-Resume.pdf",
   keywords: [
     "cybersecurity",
     "applied cryptography",
