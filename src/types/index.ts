@@ -29,12 +29,13 @@ export interface Project {
   category?: string;
   tech: string[];
   link: string;
+  linkLabel?: string;
   featured?: boolean;
   status?: string;
   architecture?: string[];
   images?: string[];
   imageCaptions?: string[];
-  imageLayout?: "natural" | "cover";
+  imageLayout?: "natural" | "cover" | "contain";
 }
 
 export interface StatItem {

@@ -160,6 +160,31 @@ export const projects = [
       "Hydrogen production and use across GoRES, NECPEssentials, REPowerEU, and Trinity scenarios",
       "Installed capacity by technology, 2020–2060"
     ]
+  },
+  {
+    featured: true,
+    title: "Cyber Risk Register",
+    category: "Governance, Risk & Compliance",
+    status: "COMPLETED",
+    description: "Designed and engineered an accessibility-first cyber risk management workspace for recording, prioritizing, and tracking security risks from identification through treatment. The application translates core GRC workflows into a focused interface that gives teams a clear view of severity, ownership, deadlines, and treatment progress.",
+    tech: ["React 19", "TypeScript", "Vite", "Vitest", "Testing Library", "Accessibility", "Web Storage API"],
+    link: "https://cyber-risk-register.vercel.app/",
+    linkLabel: "View live demo",
+    architecture: [
+      "Risk Model: Uses a strongly typed 5 × 5 likelihood-and-impact model to calculate deterministic scores and severity levels.",
+      "Operational Workflow: Supports accessible creation, review, editing, status updates, deletion, filtering, sorting, and target-date tracking.",
+      "Data Resilience: Persists immutable changes locally and provides schema-validated JSON import, export, and demo-data restoration.",
+      "Quality Engineering: Verified by 80 automated tests with keyboard navigation, focus management, semantic controls, and responsive layouts."
+    ],
+    images: [
+      "/cyber-risk-register-dashboard.png",
+      "/cyber-risk-register-risk-form.png"
+    ],
+    imageCaptions: [
+      "Risk register dashboard with portfolio filters, severity scores, owners, statuses, and target dates",
+      "Keyboard-accessible dialog for creating a complete cyber risk record"
+    ],
+    imageLayout: "contain"
   }
 ];
 

@@ -70,7 +70,7 @@ export function Projects() {
                       </div>
                     )}
                   </div>
-                  {project.link && project.link !== "#" && (
+                  {project.link && project.link !== "#" && !project.linkLabel && (
                     <a
                       href={project.link}
                       target="_blank"
@@ -83,6 +83,11 @@ export function Projects() {
                   )}
                 </div>
 
+                {project.category && (
+                  <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-wider text-accent">
+                    {project.category}
+                  </p>
+                )}
                 <h3 className="mb-4 font-sans text-2xl font-bold text-foreground sm:text-3xl">
                   {project.title}
                 </h3>
@@ -121,6 +126,17 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
+                {project.link && project.link !== "#" && project.linkLabel && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-md border border-accent/40 bg-accent/10 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-accent transition-colors hover:border-accent hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  >
+                    {project.linkLabel}
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -165,7 +181,11 @@ export function Projects() {
                     key={src}
                     className={cn(
                       "group/img relative min-h-[250px] w-full flex-1 overflow-hidden rounded-md border border-border transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_25px_-5px_var(--color-accent)]",
-                      i === 0 ? "bg-[#0e1117]" : "bg-white",
+                      project.imageLayout === "contain"
+                        ? "bg-[#f8f9fa] dark:bg-[#0e1117]"
+                        : i === 0
+                          ? "bg-[#0e1117]"
+                          : "bg-white",
                     )}
                   >
                     <Image
@@ -174,8 +194,12 @@ export function Projects() {
                       fill
                       sizes="(max-width: 1280px) 100vw, 60vw"
                       className={cn(
-                        "object-cover transition-transform duration-500 group-hover/img:scale-[1.02]",
-                        i === 0 ? "object-left-top p-1" : "object-center p-2",
+                        "transition-transform duration-500 group-hover/img:scale-[1.02]",
+                        project.imageLayout === "contain"
+                          ? "object-contain p-2"
+                          : i === 0
+                            ? "object-cover object-left-top p-1"
+                            : "object-cover object-center p-2",
                       )}
                     />
                   </div>
