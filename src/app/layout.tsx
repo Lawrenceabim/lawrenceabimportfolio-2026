@@ -22,12 +22,20 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    // (We leave 'images' completely empty here so Next.js automatically grabs your new 256x256 opengraph-image.png file!)
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 512,
+        height: 512,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
-    card: "summary", // <-- THIS specific line forces the small square side-layout across platforms!
+    card: "summary", // This keeps the small square layout across platforms
     title: siteConfig.title,
     description: siteConfig.description,
+    images: ["/opengraph-image.jpg"],
     creator: siteConfig.twitterHandle,
   },
   robots: {
