@@ -180,12 +180,16 @@ export function Projects() {
                   <div
                     key={src}
                     className={cn(
-                      "group/img relative min-h-[250px] w-full flex-1 overflow-hidden rounded-md border border-border transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_25px_-5px_var(--color-accent)]",
+                      "group/img relative w-full overflow-hidden rounded-md border border-border transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_25px_-5px_var(--color-accent)]",
                       project.imageLayout === "contain"
-                        ? "bg-[#f8f9fa] dark:bg-[#0e1117]"
-                        : i === 0
-                          ? "bg-[#0e1117]"
-                          : "bg-white",
+                        ? cn(
+                            "flex-none bg-[#f8f9fa] dark:bg-[#0e1117]",
+                            i === 0 ? "aspect-[2/1]" : "aspect-[4/3]",
+                          )
+                        : cn(
+                            "min-h-[250px] flex-1",
+                            i === 0 ? "bg-[#0e1117]" : "bg-white",
+                          ),
                     )}
                   >
                     <Image
@@ -194,12 +198,14 @@ export function Projects() {
                       fill
                       sizes="(max-width: 1280px) 100vw, 60vw"
                       className={cn(
-                        "transition-transform duration-500 group-hover/img:scale-[1.02]",
+                        "transition-transform duration-500",
                         project.imageLayout === "contain"
-                          ? "object-contain p-2"
+                          ? i === 0
+                            ? "object-cover object-center p-2 group-hover/img:scale-[1.02]"
+                            : "scale-[1.15] object-cover object-[center_70%] group-hover/img:scale-[1.18]"
                           : i === 0
-                            ? "object-cover object-left-top p-1"
-                            : "object-cover object-center p-2",
+                            ? "object-cover object-left-top p-1 group-hover/img:scale-[1.02]"
+                            : "object-cover object-center p-2 group-hover/img:scale-[1.02]",
                       )}
                     />
                   </div>
