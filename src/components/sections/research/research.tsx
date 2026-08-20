@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { research } from "@/content/site";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -71,12 +71,21 @@ export function Research() {
               {paper.link && (
                 <a 
                   href={paper.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded bg-red-50 px-3 py-1.5 font-sans text-sm font-medium text-red-600 transition-colors hover:bg-red-100 dark:bg-red-950/40 dark:text-red-400 dark:hover:bg-red-950/60"
+                  target={paper.newTab ? "_blank" : undefined}
+                  rel={paper.newTab ? "noopener noreferrer" : undefined}
+                  className={cn(
+                    "inline-flex shrink-0 items-center gap-1.5 rounded px-3 py-1.5 font-sans text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                    paper.newTab
+                      ? "bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-950/40 dark:text-red-400 dark:hover:bg-red-950/60"
+                      : "border border-accent/40 bg-accent/10 text-accent hover:border-accent hover:bg-accent/15"
+                  )}
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  PDF
+                  {paper.newTab ? (
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  ) : (
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  )}
+                  {paper.linkLabel ?? "View"}
                 </a>
               )}
             </div>

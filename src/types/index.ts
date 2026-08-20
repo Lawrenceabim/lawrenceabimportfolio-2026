@@ -4,6 +4,8 @@ export interface ResearchItem {
   year: string;
   status: "Accepted" | "Published" | "In Progress";
   link: string | null;
+  linkLabel?: string;
+  newTab?: boolean;
   overview: string;
 }
 
@@ -63,5 +65,5 @@ export interface SocialLink {
   label: string;
   href: string;
   name?: string; 
-  icon?: any; 
+  icon?: "github" | "linkedin" | "mail";
 }

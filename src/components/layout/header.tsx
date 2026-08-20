@@ -3,11 +3,19 @@
 import { Container } from "@/components/ui/container";
 import { navItems } from "@/content/site";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const resolveHref = (href: string) => {
+    if (!href.startsWith("#")) return href;
+    return isHome ? href : `/${href}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +37,8 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between">
         {/* Sleeker, smaller @Handle */}
         <a 
-          href="#profile" 
+          href={isHome ? "#profile" : "/"}
+          aria-label={isHome ? "Back to profile" : "Go to homepage"}
           className="group font-mono text-base font-medium tracking-tight text-foreground transition-colors"
         >
           <span className="text-accent transition-colors group-hover:text-foreground">@</span>
@@ -42,7 +51,7 @@ export function Header() {
             {navItems.map((item) => (
               <a
                 key={item.label}
-                href={item.href}
+                href={resolveHref(item.href)}
                 className="font-sans text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {item.label}

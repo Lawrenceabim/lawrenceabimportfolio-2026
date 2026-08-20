@@ -1,4 +1,4 @@
-import type { NavItem, SocialLink } from "@/types";
+import type { NavItem, ResearchItem, SocialLink } from "@/types";
 
 export const siteConfig = {
   name: "Bimbo Lawrence Damitan",
@@ -38,13 +38,15 @@ export const socialLinks: SocialLink[] = [
   { label: "Email", href: "mailto:lawrenceabim@gmail.com", icon: "mail" },
 ];
 
-export const research = [
+export const research: ResearchItem[] = [
   {
     title: "An Empirical Study of the Privacy-Utility Trade-off in Differentially Private Classifiers",
     venue: "23rd CIIT Conference",
     year: "2026",
     status: "Accepted", 
     link: "/papers/CIIT_2026_Privacy_Utility.pdf",
+    linkLabel: "PDF",
+    newTab: true,
     overview: "Evaluates the privacy-utility trade-off of applying Differential Privacy (DP) to machine learning classifiers in healthcare. The study demonstrates that DP Random Forest models maintain a 15% utility advantage over Logistic Regression models under strict privacy mandates (where ε ≤ 1.0).",
   },
   {
@@ -53,6 +55,8 @@ export const research = [
     year: "2026",
     status: "Accepted", 
     link: "/papers/EEM_2025_Hydrogen_Transition.pdf",
+    linkLabel: "PDF",
+    newTab: true,
     overview: "A modeling study using the GENESYS-MOD framework to analyze hydrogen-driven sector coupling in Turkiye's long-term energy transition through 2050. The research highlights how early renewable deployment and hydrogen integration are critical for decarbonization, industrial heat substitution, and cross-border energy trade with Europe.",
   },
   {
@@ -60,8 +64,9 @@ export const research = [
     venue: "Independent Research",
     year: "2026",
     status: "In Progress", 
-    link: null, 
-    overview: "An analytical review addressing the legal gaps and enforcement challenges of cybercrime in Nigeria. The paper proposes capacity-building imperatives and standard operating procedures to align domestic frameworks with international criminal standards.",
+    link: "/insights/cybercrime-enforcement-nigeria",
+    linkLabel: "Read insight",
+    overview: "An ongoing study of the operational gap between cybercrime law and enforcement in Nigeria, with a focus on reliable evidence workflows, institutional coordination, and role-specific capability building.",
   }
 ];
 
