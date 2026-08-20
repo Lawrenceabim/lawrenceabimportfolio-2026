@@ -190,7 +190,7 @@ export default function CybercrimeEnforcementNigeriaInsight() {
               <figcaption className="border-t border-border px-2 pb-1 pt-3 font-mono text-xs leading-5 text-muted-foreground sm:px-3">
                 Cybercrime enforcement sits at the intersection of technology,
                 criminal procedure, electronic evidence, and institutional
-                capability. Original visual created for this insight.
+                capability.
               </figcaption>
             </figure>
 
